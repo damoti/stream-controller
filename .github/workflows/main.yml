@@ -1,0 +1,13 @@
+name: Continuous Integration
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+    - run: pip install -e .
+    - working-directory: tests
+      run: python -m unittest discover
